@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Global Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-black/70 rounded-lg transition-colors;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-black/90;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  /* Dark Mode Scrollbar Styling */
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-white/50;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/70;
+  }
+}
+
+
+/* .no-scrollbar::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .no-scrollbar {
+    -ms-overflow-style: none; */
+    /* IE and Edge */
+    /* scrollbar-width: none; */
+    /* Firefox */
+/* } */
+
+
+/* Light Theme */
+.light-theme .ql-toolbar .ql-stroke {
+    stroke: #333;
+    /* Darker color for light theme */
+}
+
+.light-theme .ql-toolbar .ql-fill,
+.light-theme .ql-toolbar .ql-picker,
+.light-theme .ql-toolbar button {
+    color: #333;
+    fill: #333;
+    /* Adjust the fill color for dropdowns and icons */
+}
+
+.light-theme .ql-toolbar .ql-picker-label {
+    color: #333;
+}
+
+.light-theme .ql-toolbar .ql-picker-options {
+    background-color: #f9f9f9;
+}
+
+/* Dark Theme */
+.dark-theme .ql-toolbar .ql-stroke {
+    stroke: #ddd;
+    /* Lighter color for dark theme */
+}
+
+.dark-theme .ql-toolbar .ql-fill,
+.dark-theme .ql-toolbar .ql-picker,
+.dark-theme .ql-toolbar  button {
+    color: #ddd;
+    fill: #ddd;
+    /* Adjust the fill color for dropdowns and icons */
+}
+
+.dark-theme .ql-toolbar .ql-picker-label {
+    color: #ddd;
+}
+
+.dark-theme .ql-toolbar .ql-picker-options {
+    background-color: #333;
+}
+
+.dark-theme .ql-editor::before {  /* Change this to your desired placeholder text color for dark theme */
+    color: #bbbbbb; 
+}
+.ql-editor {
+    min-height: 100px;
+    font-size: 18px;
+    /* Set the desired minimum height */
+}
+
+/* Increase icon size in the toolbar */
+.ql-toolbar .ql-formats button svg {
+    width: 22px;
+    /* Adjust icon width */
+    height: 22px;
+    /* Adjust icon height */
+    
+}
+
+.ql-toolbar .ql-picker {
+    width: 32px;
+        
+    height: 22px;
+      
+}
+
+.ql-toolbar {
+    height: 80px;
+}
+
+.ql-toolbar .ql-formats{
+    height: 60%;
+}
+@media (max-width: 580px) {
+    .ql-toolbar {
+        height: 120px;
+    }    
+    .ql-toolbar .ql-formats {
+        height: 40%;
+    }
+    .ql-editor {
+        min-height: 150px;
+        font-size: 18px;
+        /* Set the desired minimum height */
+    }
+}
+@media (max-width: 400px) {
+    .ql-toolbar {
+        height: 150px;
+    }    
+    .ql-toolbar .ql-formats {
+        height: 28%;
+    }
+    .ql-editor {
+        min-height: 150px;
+        font-size: 18px;
+        /* Set the desired minimum height */
+    }
+}
+
+/* .ql-toolbar .ql-picker-options{
+    height: 92px;
+} */
+

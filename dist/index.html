@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/blacktms.svg"/>
+    <script>
+      const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+      const themeLink = document.getElementById('favicon');
+      
+      // Function to update the theme
+      function updateTheme(e) {
+        if (e.matches) {
+          themeLink.href = '/whitetms.svg';
+        } else {
+          themeLink.href = '/blacktms.svg';
+        }
+      }
+      
+      // Initial theme check
+      updateTheme(darkThemeMq);
+      
+      // Listen for changes in the theme preference
+      darkThemeMq.addListener(e => updateTheme(e));
+      
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMS | Task Management System</title>
+    <script type="module" crossorigin src="/assets/index-C0RV9RmM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DQVgb5OL.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -7,15 +7,14 @@ import Welcome from "./components/Welcome";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 
-// Lazy load other components
-const App = lazy(() => import("./App.jsx"));
-const Home = lazy(() => import("./components/home/Home.jsx"));
-const Tasks = lazy(() => import("./components/tasks/Tasks.jsx"));
-const Mentors = lazy(() => import("./components/mentors/Mentors.jsx"));
-const Chat = lazy(() => import("./components/chat/Chat.jsx"));
-const Settings = lazy(() => import("./components/settings/Settings.jsx"));
-const Submissions = lazy(() => import("./components/submissions/Submissions.jsx"));
-const AssignTask = lazy(() => import("./components/assignTask/AssignTask.jsx"));
+import App from "./App";
+import Home from "./components/home/Home";
+import Tasks from "./components/tasks/Tasks";
+import Mentors from "./components/mentors/Mentors";
+import Chat from "./components/chat/Chat";
+import Settings from "./components/settings/Settings";
+import Submissions from "./components/submissions/Submissions";
+import AssignTask from "./components/tasks/AssignTask";
 
 export default function Routes() {
   const { uid, userType } = useUser();
@@ -96,15 +95,15 @@ export default function Routes() {
         <h1 className="text-8xl">Loading...</h1>
       </div>
     ) : (
-      <Suspense
-        fallback={
-          <div className="flex justify-center items-center h-screen dark:bg-[#070F2B] dark:text-[#DFF2EB] bg-[#DFF2EB]">
-            <h1 className="text-8xl">Loading...</h1>
-          </div>
-        }
-      >
+      // <Suspense
+      //   fallback={
+      //     <div className="flex justify-center items-center h-screen dark:bg-[#070F2B] dark:text-[#DFF2EB] bg-[#DFF2EB]">
+      //       <h1 className="text-8xl">Loading...</h1>
+      //     </div>
+      //   }
+      // >
         <RouterProvider router={router} />
-      </Suspense>
+      // </Suspense>
     )
   );
 }

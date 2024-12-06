@@ -9,4 +9,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 2000,
   },
+  build: {
+    target: 'esnext', // Allows top-level await
+  },
 })

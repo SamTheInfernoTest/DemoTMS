@@ -27,7 +27,7 @@ const handlers = [
     }),
 
     // login Teacher
-    http.post(`${baseApiUrl}/teacher/login/`, async ({ request }) => {
+    http.post(`${baseApiUrl}/mentor/login/`, async ({ request }) => {
         
         const data = await request.json();
         
@@ -39,7 +39,7 @@ const handlers = [
                 refreshToken: 'refreshToken',
                 access: 'accessToken',
                 bgImage: '/mockData/tBg.jpg',
-                moto:'Let s do it'
+                moto: "A value system that drives a teacher's passion and helps them improve every day."
             }
         )
     }),
@@ -54,10 +54,7 @@ const handlers = [
         return HttpResponse.json(submissions)
     }),
 
-    //get Mentors
-    http.get(`${baseApiUrl}/mentor/getMentors/*`, async ({ request }) => {
-        return HttpResponse.json([])
-    }),
+    
 ]
 
 const worker = setupWorker( ...handlers)

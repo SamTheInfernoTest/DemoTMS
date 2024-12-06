@@ -3,6 +3,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 
 import useUser from "../../context/UserContext"
 import TaskHead from "./TaskHead";
+import {tasks as task} from "../../MockData"
 
 function Submissions() {
 
@@ -11,7 +12,7 @@ function Submissions() {
 
   const startDate = new Date().setDate(new Date().getDate() - 7);
   const endDate = new Date().setDate(new Date().getDate() + 7);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(task);
 
 
   const [dateRange, setDateRange] = useState({
@@ -20,12 +21,12 @@ function Submissions() {
   });
 
 
-  useEffect(() => {
-    if (dateRange.startDate) {
-      axiosSecure.get(`task/getAssignedTasks/${uid}/${dateRange.startDate}/${dateRange.endDate}`).then(res => {setTasks(res.data)});
-    }
+  // useEffect(() => {
+  //   if (dateRange.startDate) {
+  //     axiosSecure.get(`task/getAssignedTasks/${uid}/${dateRange.startDate}/${dateRange.endDate}`).then(res => {setTasks(res.data)});
+  //   }
 
-  }, [dateRange])
+  // }, [dateRange])
 
 
 

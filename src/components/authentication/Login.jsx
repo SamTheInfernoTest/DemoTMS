@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -41,6 +41,8 @@ function Login() {
       toast.info('Please enter UID, Password and Select type of User',{ containerId: "login", toastId:'notFullyFilled' });
     }
   }
+
+  const [isPending, startTransition] = useTransition();
 
 
   return (
@@ -120,7 +122,10 @@ function Login() {
               <button type="submit" className="ml-auto dark:bg-darkButton bg-lightButton px-6 py-2 rounded-full dark:text-[#DFF2EB] text-white hover:ring dark:hover:ring-darkHover hover:ring-darkHover font-semibold"
                 onClick={(e) => {
                   e.preventDefault();
-                  loginUser();
+                  startTransition(() => {
+                    toast.info('Validating...', { containerId: "login", toastId:'loginLoading' });
+                    loginUser();
+                  });
                 }}
               >Login</button>
             </div>

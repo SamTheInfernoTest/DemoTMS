@@ -1,6 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import { RouterProvider, Navigate } from "react-router-dom";
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useTransition } from "react";
 
 import useUser from "./context/UserContext";
 import Welcome from "./components/Welcome";
@@ -14,29 +14,31 @@ import Mentors from "./components/mentors/Mentors";
 import Chat from "./components/chat/Chat";
 import Settings from "./components/settings/Settings";
 import Submissions from "./components/submissions/Submissions";
-import AssignTask from "./components/tasks/AssignTask";
+import AssignTask from "./components/assignTask/AssignTask";
 
 export default function Routes() {
   const { uid, userType } = useUser();
   const [router, setRouter] = useState(null);
 
+  const [isPending, startTransition] = useTransition();
+
   // Preload all lazy-loaded components
-  useEffect(() => {
-    const preloadComponents = () => {
-      App.preload?.();
-      Home.preload?.();
-      Tasks.preload?.();
-      Mentors.preload?.();
-      Chat.preload?.();
-      Settings.preload?.();
-      Submissions.preload?.();
-      AssignTask.preload?.();
-    };
+  // useEffect(() => {
+  //   const preloadComponents = () => {
+  //     App.preload?.();
+  //     Home.preload?.();
+  //     Tasks.preload?.();
+  //     Mentors.preload?.();
+  //     Chat.preload?.();
+  //     Settings.preload?.();
+  //     Submissions.preload?.();
+  //     AssignTask.preload?.();
+  //   };
 
     
-    preloadComponents();
+  //   preloadComponents();
     
-  }, [userType]);
+  // }, [userType]);
 
   const router1 = createBrowserRouter(
     createRoutesFromElements(
@@ -83,9 +85,13 @@ export default function Routes() {
     if (userType === null) {
       setRouter(router1);
     } else if (userType === "student") {
-      setRouter(router2);
+      startTransition(() => {
+        setRouter(router2);
+      })
     } else if (userType === "mentor") {
-      setRouter(router3);
+      startTransition(() => {
+        setRouter(router3);
+      })
     }
   }, [uid, userType]);
 

@@ -1,19 +1,22 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom"
 import { RouterProvider, Navigate } from 'react-router-dom'
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 
 import useUser from "./context/UserContext";
-import Welcome from "./components/Welcome.jsx";
-import App from "./App.jsx";
-import Home from "./components/home/Home.jsx";
-import Tasks from "./components/tasks/Tasks.jsx";
-import Mentors from "./components/mentors/Mentors.jsx";
-import Chat from "./components/chat/Chat.jsx";
-import Settings from "./components/settings/Settings.jsx";
-import Login from "./components/authentication/Login.jsx";
-import Register from "./components/authentication/Register.jsx";
-import Submissions from "./components/submissions/Submissions.jsx";
-import AssignTask from "./components/assignTask/AssignTask.jsx";
+import Welcome from "./components/Welcome";
+
+// Dynamic imports for components
+
+const App = lazy(() => import("./App.jsx"));
+const Home = lazy(() => import("./components/home/Home.jsx"));
+const Tasks = lazy(() => import("./components/tasks/Tasks.jsx"));
+const Mentors = lazy(() => import("./components/mentors/Mentors.jsx"));
+const Chat = lazy(() => import("./components/chat/Chat.jsx"));
+const Settings = lazy(() => import("./components/settings/Settings.jsx"));
+const Login = lazy(() => import("./components/authentication/Login.jsx"));
+const Register = lazy(() => import("./components/authentication/Register.jsx"));
+const Submissions = lazy(() => import("./components/submissions/Submissions.jsx"));
+const AssignTask = lazy(() => import("./components/assignTask/AssignTask.jsx"));
 
 
 export default function Routes() {
@@ -80,9 +83,16 @@ export default function Routes() {
       <div className="flex justify-center items-center h-screen dark:bg-[#070F2B] dark:text-[#DFF2EB] bg-[#DFF2EB]">
         <h1 className="text-8xl">Loading...</h1>
       </div>
-    ) : (
-      <RouterProvider router={router} />
-    )
+    ) : 
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen dark:bg-[#070F2B] dark:text-[#DFF2EB] bg-[#DFF2EB]">
+            <h1 className="text-8xl">Loading...</h1>
+          </div>
+        }
+      >
+        <RouterProvider router={router} />
+      </Suspense>
 
   )
 }

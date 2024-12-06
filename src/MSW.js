@@ -16,7 +16,7 @@ const handlers = [
         // const uid = data.get('uid');
         return HttpResponse.json({
                 name: data.uid,
-                profileImage: '/mockData/student.png',
+                profileImage: '/mockData/student.svg',
                 standards: ['Standard 10'],
                 refreshToken: 'refreshToken',
                 access: 'accessToken',

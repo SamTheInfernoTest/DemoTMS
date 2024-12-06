@@ -23,6 +23,24 @@ export default function Routes() {
   const { uid, userType } = useUser();
   const [router, setRouter] = useState(null);
 
+  // Preload all lazy-loaded components
+  useEffect(() => {
+    const preloadComponents = () => {
+      App.preload?.();
+      Home.preload?.();
+      Tasks.preload?.();
+      Mentors.preload?.();
+      Chat.preload?.();
+      Settings.preload?.();
+      Submissions.preload?.();
+      AssignTask.preload?.();
+    };
+
+    if (userType !== null) {
+      preloadComponents();
+    }
+  }, [userType]);
+
 
   const router1 = createBrowserRouter(
     createRoutesFromElements(

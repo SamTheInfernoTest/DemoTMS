@@ -208,7 +208,7 @@ function TaskViewer({ info, setTaskViewer, submittedTask }) {
                                                 </svg> File by Mentor</button>}
 
                                         </div>
-                                        <div className='flex justify-center  w-full sm:mb-0 mb-10 sm:mt-0'>
+                                        <div className='flex justify-center  w-full sm:mb-0 mb-10 sm:mt-0 mt-5'>
 
                                         <button
                                             className='font-semibold hover:font-bold text-xl px-2 py-1 bg-blue-500 text-white rounded-xl hover:bg-blue-600 mx-auto'

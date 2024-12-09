@@ -132,7 +132,7 @@ function Tasks() {
         (<div className='sm:p-4'>
           <div className='flex justify-between'>
             <h1
-              className='text-3xl font-bold py-4'
+            className='sm:text-3xl text-2xl font-bold py-4'
             >Time Limit</h1>
           <div className='my-auto'>
               <button
@@ -172,7 +172,7 @@ function Tasks() {
       <div className='sm:p-4'>
         <div className='flex justify-between'>
           <h1
-            className='text-3xl font-bold py-4'
+            className='sm:text-3xl text-2xl font-bold py-4'
           >New Task</h1>
           <div className='my-auto'>
             <button
@@ -219,7 +219,7 @@ function Tasks() {
         (<div className='sm:p-4'>
           <div className='flex justify-between'>
             <h1
-              className='text-3xl font-bold py-4'
+            className='sm:text-3xl text-2xl font-bold py-4'
             >Completed Tasks</h1>
             <div className='my-auto'>
               <button

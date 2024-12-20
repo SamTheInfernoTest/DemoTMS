@@ -16,6 +16,8 @@ import Settings from "./components/settings/Settings";
 import Submissions from "./components/submissions/Submissions";
 import AssignTask from "./components/assignTask/AssignTask";
 
+import { Analytics } from '@vercel/analytics/react';
+
 export default function Routes() {
   const { uid, userType } = useUser();
   const [router, setRouter] = useState(null);
@@ -35,9 +37,9 @@ export default function Routes() {
   //     AssignTask.preload?.();
   //   };
 
-    
+
   //   preloadComponents();
-    
+
   // }, [userType]);
 
   const router1 = createBrowserRouter(
@@ -108,7 +110,10 @@ export default function Routes() {
       //     </div>
       //   }
       // >
+      <div>
         <RouterProvider router={router} />
+        <Analytics />
+      </div>
       // </Suspense>
     )
   );
